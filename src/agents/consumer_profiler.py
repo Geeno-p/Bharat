@@ -11,7 +11,7 @@ def create_consumer_profiler_agent() -> Agent:
     """
     Creates and configures the ConsumerProfiler Agent.
     """
-    model_id = os.environ.get("BEDROCK_MODEL_ID", "meta.llama3-8b-instruct-v1:0")
+    model_id = os.environ.get("BEDROCK_MODEL_ID", "amazon.nova-lite-v1:0")
     region = os.environ.get("AWS_REGION", "us-east-1")
     
     logger.info(f"Initializing ConsumerProfiler Agent with model {model_id}")
@@ -43,4 +43,6 @@ def run_consumer_analysis(customer_id: str) -> str:
     """
     query = f"Analyze customer {customer_id} and update their segment."
     response = consumer_agent(query)
-    return response.text
+    # Extract text from the message content blocks
+    text_blocks = [block['text'] for block in response.message['content'] if 'text' in block]
+    return "".join(text_blocks).strip()

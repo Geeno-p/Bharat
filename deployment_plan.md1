@@ -1,0 +1,41 @@
+# AWS Deployment Plan: App Runner (GitHub Sync)
+
+We will use **AWS App Runner** to deploy the platform. Since you have a GitHub repository (`https://github.com/Geeno-p/Bharat`), the easiest and most cost-effective way is to connect App Runner directly to your repo. This way, any change you push to GitHub will automatically deploy to AWS.
+
+## 1. Prerequisites
+- [x] GitHub Repository: `https://github.com/Geeno-p/Bharat`
+- [x] Bedrock Model Access (Nova Lite) enabled in `us-east-1`.
+- [ ] Ensure all local changes (including [Dockerfile](file:///c:/Users/geeno.perumal/Downloads/Bharat/Dockerfile)) are pushed to GitHub.
+
+## 2. Infrastructure Components
+- **Compute**: AWS App Runner (vCPU: 1, GB: 2).
+- **Storage**: Amazon S3 (For persistent LanceDB storage).
+- **Sync**: Automatic deployment on every commit to the `main` branch.
+
+## 3. Deployment Steps
+
+### Step 1: Push Changes to GitHub
+Run these commands in your terminal to ensure AWS sees the latest code and [Dockerfile](file:///c:/Users/geeno.perumal/Downloads/Bharat/Dockerfile):
+```bash
+git add .
+git commit -m "Prepare for AWS App Runner deployment"
+git push origin main
+```
+
+### Step 2: Create App Runner Service (Console)
+1. Go to **AWS Console** -> **AWS App Runner**.
+2. Click **Create Service**.
+3. Source: **Source code repository**.
+4. Connect your GitHub account and select the `Bharat` repository.
+5. Deployment settings: **Automatic**.
+6. Configuration: **Configure all settings here**.
+   - **Runtime**: `Python 3` (or use [Dockerfile](file:///c:/Users/geeno.perumal/Downloads/Bharat/Dockerfile) - recommended).
+   - If using **Dockerfile**: Select "Use a Dockerfile" in build settings.
+7. **Instance Configuration**: vCPU: 1, Memory: 2GB.
+8. **Security**: Assign an IAM Role with `AmazonBedrockFullAccess` and `AmazonS3FullAccess`.
+
+## 4. Environment Variables
+Add these in the App Runner configuration:
+- `BEDROCK_MODEL_ID`: `amazon.nova-lite-v1:0`
+- `AWS_REGION`: `us-east-1`
+- `API_KEY`: [Your Secret Key]

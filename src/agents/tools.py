@@ -27,15 +27,9 @@ MOCK_MARKET_DATA = [
 ]
 
 @tool
-def get_competitor_pricing(product_id: str) -> List[dict]:
+def get_competitor_pricing(product_id: str) -> List[MarketData]:
     """
-    Fetches the latest competitor pricing for a given product ID across all monitored platforms.
-    
-    Args:
-        product_id: The unique identifier for the product
-        
-    Returns:
-        List[dict]: A list of market data dictionaries containing competitor prices
+    Fetches the latest competitor pricing for a given product ID and returns a list of MarketData objects.
     """
     logger.info(f"Fetching competitor pricing for product: {product_id}")
     
@@ -47,7 +41,8 @@ def get_competitor_pricing(product_id: str) -> List[dict]:
         logger.info(f"Found {len(similar)} similar products in LanceDB.")
 
     # In MVP, we return mock data filtered by product_id
-    results = [data for data in MOCK_MARKET_DATA if data["product_id"] == product_id]
+    # Note: Converting MOCK_MARKET_DATA to MarketData objects
+    results = [MarketData(**data) for data in MOCK_MARKET_DATA if data["product_id"] == product_id]
     return results
 
 @tool
@@ -67,7 +62,7 @@ def detect_price_changes(product_id: str, current_price: float) -> str:
     if not competitor_data:
         return f"No competitor data found for product {product_id}."
         
-    prices = [data["price"] for data in competitor_data]
+    prices = [data.price for data in competitor_data]
     min_comp_price = min(prices)
     
     if current_price > min_comp_price:

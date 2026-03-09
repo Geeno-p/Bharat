@@ -27,7 +27,7 @@ def create_market_intelligence_agent() -> Agent:
     Creates and configures the Market Intelligence Agent using Amazon Bedrock.
     """
     # Using Llama 3 8B which usually doesn't require extra use-case forms.
-    model_id = os.environ.get("BEDROCK_MODEL_ID", "meta.llama3-8b-instruct-v1:0")
+    model_id = os.environ.get("BEDROCK_MODEL_ID", "amazon.nova-lite-v1:0")
     region = os.environ.get("AWS_REGION", "us-east-1")
     
     logger.info(f"Initializing Market Intelligence Agent with model {model_id} in {region}")
@@ -54,4 +54,6 @@ def run_agent(query: str) -> str:
     Execute a query against the Market Intelligence Agent.
     """
     response = market_agent(query)
-    return response.text
+    # Extract text from the message content blocks
+    text_blocks = [block['text'] for block in response.message['content'] if 'text' in block]
+    return "".join(text_blocks).strip()

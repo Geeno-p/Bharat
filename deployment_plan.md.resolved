@@ -1,0 +1,46 @@
+# AWS Deployment Plan: App Runner
+
+This plan outlines the steps to deploy the AI-Powered Retail Intelligence Platform to AWS using **AWS App Runner**, which is the most cost-effective and easiest way to run containerized FastAPI applications.
+
+## 1. Prerequisites
+- [ ] AWS CLI configured locally.
+- [ ] Docker installed (optional, can use App Runner source-to-service).
+- [ ] Bedrock Model Access (Nova Lite) enabled in the target region.
+
+## 2. Infrastructure Components
+- **Compute**: AWS App Runner (Automatic scaling, managed SSL).
+- **Storage**: Amazon S3 (For LanceDB vector data and logs).
+- **Secrets**: AWS Secrets Manager (For API Keys and AWS credentials if not using IAM roles).
+
+## 3. Deployment Steps
+
+### Step 1: ECR Repository
+Create a private repository to host the Docker image.
+```bash
+aws ecr create-repository --repository-name retail-intelligence-platform
+```
+
+### Step 2: Build and Push
+```bash
+# Login to ECR
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin <aws_account_id>.dkr.ecr.us-east-1.amazonaws.com
+
+# Build
+docker build -t retail-intelligence-platform .
+
+# Tag and Push
+docker tag retail-intelligence-platform:latest <aws_account_id>.dkr.ecr.us-east-1.amazonaws.com/retail-intelligence-platform:latest
+docker push <aws_account_id>.dkr.ecr.us-east-1.amazonaws.com/retail-intelligence-platform:latest
+```
+
+### Step 3: Create App Runner Service
+Configure the service to use the ECR image.
+- **Port**: 8000
+- **Runtime Env Vars**:
+  - `BEDROCK_MODEL_ID`: `amazon.nova-lite-v1:0`
+  - `AWS_REGION`: `us-east-1`
+  - `API_KEY`: [Your Secret Key]
+
+## 4. Security & Costs
+- **IAM Role**: Grant the App Runner instance role `AmazonBedrockFullAccess` and `AmazonS3FullAccess`.
+- **Cost Estimate**: ~$0.007/hour for a basic App Runner instance (vCPU: 1, GB: 2).
