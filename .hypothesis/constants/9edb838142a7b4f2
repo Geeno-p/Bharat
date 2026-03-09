@@ -1,0 +1,4 @@
+# file: C:\Users\geeno.perumal\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\strands\agent\agent.py
+# hypothesis_version: 6.151.9
+
+['-', 'Agent', 'Strands Agents', 'T', 'ToolProvider', '_', 'agent', 'assistant', 'callback_handler', 'config', 'content', 'default', 'error', 'gen_ai.agent.id', 'gen_ai.agent.name', 'gen_ai.choice', 'gen_ai.system', 'input', 'inputSchema', 'interruptId', 'interruptResponse', 'invocation_state', 'json', 'message', 'model_id', 'name', 'output', 'properties', 'redactContent', 'response', 'result', 'role', 'span', 'stop', 'strands-agents', 'system', 'text', 'toolResult', 'toolUse', 'toolUseId', 'tool_registry', 'user']

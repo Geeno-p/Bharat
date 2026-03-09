@@ -1,0 +1,4 @@
+# file: C:\Users\geeno.perumal\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\strands\event_loop\streaming.py
+# hypothesis_version: 6.151.9
+
+[1000, 'INVALID_TOOL_NAME', '[blank text]', 'assistant', 'citation', 'citations', 'citationsContent', 'content', 'contentBlockDelta', 'contentBlockStart', 'contentBlockStop', 'current_tool_use', 'delta', 'end_turn', 'input', 'message', 'messageStart', 'messageStop', 'metadata', 'metrics', 'name', 'reasoningContent', 'reasoningText', 'redactContent', 'redactedContent', 'role', 'signature', 'start', 'stopReason', 'text', 'timeToFirstByteMs', 'toolUse', 'toolUseId', 'usage']

@@ -1,0 +1,4 @@
+# file: C:\Users\geeno.perumal\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\strands\telemetry\config.py
+# hypothesis_version: 6.151.9
+
+['Initializing meter', 'Initializing tracer', 'StrandsTelemetry', 'opentelemetry', 'python', 'service.name', 'service.version', 'strands-agents', 'telemetry.sdk.name']

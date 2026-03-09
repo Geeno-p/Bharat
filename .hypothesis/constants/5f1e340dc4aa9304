@@ -1,0 +1,4 @@
+# file: C:\Users\geeno.perumal\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\strands\types\_events.py
+# hypothesis_version: 6.151.9
+
+['AgentResult', 'EventLoopMetrics', 'callback', 'citation', 'current_tool_use', 'data', 'delta', 'event', 'force_stop', 'force_stop_reason', 'init_event_loop', 'interrupts', 'message', 'reasoning', 'reasoningText', 'reasoning_signature', 'result', 'start', 'start_event_loop', 'stop', 'structured_output', 'toolUseId', 'tool_cancel_event', 'tool_interrupt_event', 'tool_result', 'tool_stream_event', 'tool_use']

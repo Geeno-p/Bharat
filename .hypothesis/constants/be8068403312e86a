@@ -1,0 +1,4 @@
+# file: C:\Users\geeno.perumal\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\strands\telemetry\tracer.py
+# hypothesis_version: 6.151.9
+
+['<replaced>', 'accumulated_usage', 'arguments', 'assistant', 'cacheReadInputTokens', 'chat', 'content', 'event_loop.cycle_id', 'event_loop_cycle_id', 'execute_tool', 'finish_reason', 'force_flush', 'gen_ai.agent.name', 'gen_ai.agent.tools', 'gen_ai.choice', 'gen_ai.provider.name', 'gen_ai.request.model', 'gen_ai.system', 'gen_ai.tool.call.id', 'gen_ai.tool.message', 'gen_ai.tool.name', 'gen_ai.tool.status', 'gen_ai.user.message', 'id', 'input', 'inputTokens', 'invoke_agent', 'latencyMs', 'message', 'metrics', 'name', 'outputTokens', 'parts', 'response', 'role', 'status', 'strands-agents', 'text', 'timeToFirstByteMs', 'tool', 'tool.result', 'toolResult', 'toolUse', 'toolUseId', 'tool_call', 'tool_call_response', 'totalTokens', 'type', 'user']

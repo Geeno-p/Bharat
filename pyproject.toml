@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "retail-intelligence"
+version = "0.1.0"
+description = "AI-Powered Retail Intelligence Platform"
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+packages = [{include = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "*"
+uvicorn = "*"
+pydantic = "^2.0.0"
+boto3 = "^1.28.0"
+strands-agents = "^1.14.0"
+lancedb = "^0.17.0"
+pyarrow = "^18.0.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "*"
+hypothesis = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

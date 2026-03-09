@@ -1,0 +1,4 @@
+# file: C:\Users\geeno.perumal\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\strands\tools\tools.py
+# hypothesis_version: 6.151.9
+
+['$ref', '^[a-zA-Z0-9_\\-]{1,}$', 'description', 'inputSchema', 'json', 'name', 'object', 'properties', 'python', 'required', 'string', 'tool name missing', 'type']
