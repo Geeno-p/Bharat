@@ -20,9 +20,10 @@ app = FastAPI(
 @app.get("/")
 def read_root():
     return {
-        "message": "Welcome to the AI-Powered Retail Intelligence Platform (Bharat)",
+        "message": "Welcome to the AI-Powered Retail Intelligence Platform - VERSION V2-DEBUG",
         "docs": "/docs",
-        "status": "online"
+        "status": "online",
+        "timestamp": "2026-03-15"
     }
 
 @app.get("/health", tags=["System"])
