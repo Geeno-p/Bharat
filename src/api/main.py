@@ -4,6 +4,7 @@ from src.api.auth import get_api_key
 from src.models.core import Product, MarketData, Customer
 from src.agents.market_intelligence import run_agent
 from src.agents.consumer_profiler import run_consumer_analysis
+from src.agents.demand_oracle import run_demand_forecast
 import logging
 
 # Configure logging
@@ -15,6 +16,14 @@ app = FastAPI(
     description="Autonomous market intelligence and pricing optimization.",
     version="0.1.0"
 )
+
+@app.get("/")
+def read_root():
+    return {
+        "message": "Welcome to the AI-Powered Retail Intelligence Platform (Bharat)",
+        "docs": "/docs",
+        "status": "online"
+    }
 
 @app.get("/health", tags=["System"])
 async def health_check():
@@ -55,6 +64,19 @@ async def analyze_customer(customer_id: str, api_key: str = Depends(get_api_key)
         return {"customer_id": customer_id, "analysis": result}
     except Exception as e:
         logger.error(f"Error during customer analysis: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/analyze/demand", tags=["Inventory Intelligence"])
+async def analyze_demand(product_id: str, api_key: str = Depends(get_api_key)):
+    """
+    Triggers demand forecasting and restocking analysis for a product.
+    """
+    logger.info(f"Demand analysis requested for product: {product_id}")
+    try:
+        result = run_demand_forecast(product_id)
+        return {"product_id": product_id, "forecast": result}
+    except Exception as e:
+        logger.error(f"Error during demand analysis: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/dashboard/summary", tags=["Dashboard"])
